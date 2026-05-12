@@ -185,11 +185,11 @@
       <div class="c-item"><div class="c-icon"><i class="ti ti-mail"></i></div><div><div class="c-lbl">Email</div><div class="c-val">lawkamodo@gmail.com</div></div></div>
       <div class="c-item"><div class="c-icon"><i class="ti ti-map-pin"></i></div><div><div class="c-lbl">Location</div><div class="c-val">Mombasa, Kenya</div></div></div>
     </div>
-    <div class="contact-form">
-      <div class="form-group"><label>Your Name</label><input type="text" placeholder="e.g. Jane Wanjiru" /></div>
-      <div class="form-group"><label>Phone or Email</label><input type="text" placeholder="0700 000 000 or email@example.com" /></div>
+    <form class="contact-form" action="https://formspree.io/f/xrejjwke" method="POST">
+      <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="e.g. Jane Wanjiru" required /></div>
+      <div class="form-group"><label>Phone or Email</label><input type="text" name="contact" placeholder="0700 000 000 or email@example.com" required /></div>
       <div class="form-group"><label>Service Needed</label>
-        <select>
+        <select name="service" required>
           <option value="">Select a service...</option>
           <option>CV Writing & Career Support</option>
           <option>Cybersecurity Awareness</option>
@@ -199,9 +199,9 @@
           <option>Digital Skills Training</option>
         </select>
       </div>
-      <div class="form-group"><label>Message</label><textarea placeholder="Tell me what you need..."></textarea></div>
-      <button class="submit-btn" id="sbtn" onclick="handleSubmit()">Send Message 🚀</button>
-    </div>
+      <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell me what you need..." required></textarea></div>
+      <button type="submit" class="submit-btn">Send Message 🚀</button>
+    </form>
   </div>
 </section>
 
