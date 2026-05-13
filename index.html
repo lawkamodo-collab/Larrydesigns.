@@ -96,7 +96,21 @@
       .about-visual { display: none; }
       .hero-stats { gap: 1.5rem; }
     }
-  </style>
+  
+    .svc-panel { display:none; grid-column:1/-1; background:rgba(59,130,246,0.04); border:1px solid rgba(59,130,246,0.15); border-radius:14px; overflow:hidden; transition:all 0.3s; }
+    .svc-panel.open { display:block; animation:slideDown 0.3s ease; }
+    @keyframes slideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+    .panel-inner { padding:1.5rem 2rem; }
+    .panel-inner h4 { font-size:0.85rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.75rem; margin-top:1.2rem; }
+    .panel-inner h4:first-child { margin-top:0; }
+    .panel-inner ul { list-style:none; display:flex; flex-direction:column; gap:6px; }
+    .panel-inner ul li { font-size:0.9rem; color:var(--muted); padding-left:1.2rem; position:relative; line-height:1.5; }
+    .panel-inner ul li::before { content:"✓"; position:absolute; left:0; color:var(--green); font-weight:700; }
+    .example-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:0.5rem; }
+    .ex-tag { background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--text); padding:5px 12px; border-radius:50px; font-size:0.78rem; }
+    .panel-btn { display:inline-block; margin-top:1.5rem; background:#25D366; color:#fff; padding:0.75rem 1.5rem; border-radius:10px; font-weight:700; font-size:0.875rem; text-decoration:none; transition:opacity 0.2s; }
+    .panel-btn:hover { opacity:0.85; }
+</style>
 </head>
 <body>
 
@@ -133,12 +147,192 @@
   <h2 class="sec-title">Services</h2>
   <p class="sec-sub">Affordable, professional services to help you grow your career, protect yourself online, and build your brand.</p>
   <div class="services-grid">
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-file-cv"></i></div><h3>CV Writing & Career Support</h3><p>Professional CVs, cover letters, and job application guidance that get you noticed by employers.</p><div class="svc-price">From KSh 500</div></div>
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-shield-lock"></i></div><h3>Cybersecurity Awareness</h3><p>Training and content to help individuals and businesses stay safe from online threats and scams.</p><div class="svc-price">From KSh 1,000</div></div>
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-device-mobile"></i></div><h3>Social Media Content</h3><p>TikTok, Instagram, and Facebook scripts, captions, and video strategies for personal brands.</p><div class="svc-price">From KSh 800</div></div>
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-world"></i></div><h3>Website Design</h3><p>Clean, modern, mobile-friendly websites for businesses, portfolios, and personal brands.</p><div class="svc-price">From KSh 5,000</div></div>
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-brush"></i></div><h3>Graphic Design</h3><p>Flyers, posters, banners, and digital marketing materials designed for your brand or event.</p><div class="svc-price">From KSh 400</div></div>
-    <div class="svc-card"><div class="svc-icon"><i class="ti ti-school"></i></div><h3>Digital Skills Training</h3><p>Sessions covering online safety, social media, basic computer skills, and digital literacy.</p><div class="svc-price">From KSh 1,500</div></div>
+    <div class="svc-card" onclick="toggleService('cv')" style="cursor:pointer">
+      <div class="svc-icon"><i class="ti ti-file-cv"></i></div>
+      <h3>CV Writing & Career Support</h3>
+      <p>Professional CVs, cover letters, and job application guidance that get you noticed by employers.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem">
+        <div class="svc-price">From KSh 500</div>
+        <span id="cv-arrow" style="color:var(--accent);font-size:18px;transition:transform 0.3s">&#43;</span>
+      </div>
+    </div>
+    <div id="cv-panel" class="svc-panel">
+      <div class="panel-inner">
+        <h4>What you get:</h4>
+        <ul>
+          <li>Professionally designed CV tailored to your target job</li>
+          <li>Cover letter written specifically for each employer</li>
+          <li>Email script to send with your application</li>
+          <li>Job application guidance and verified company contacts</li>
+          <li>Delivered as a ready-to-print Word document</li>
+        </ul>
+        <h4>Examples of CVs I have written:</h4>
+        <div class="example-tags">
+          <span class="ex-tag">📄 Packaging & Production CV</span>
+          <span class="ex-tag">🏗️ Civil Engineering CV</span>
+          <span class="ex-tag">🚢 Logistics & Warehouse CV</span>
+          <span class="ex-tag">🛒 Retail & Sales CV</span>
+          <span class="ex-tag">🏥 Healthcare Admin CV</span>
+        </div>
+        <a href="https://wa.me/254790965427?text=Hi%20Larry!%20I%20need%20a%20professional%20CV" target="_blank" class="panel-btn">Order Now on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="svc-card" onclick="toggleService('cyber')" style="cursor:pointer">
+      <div class="svc-icon"><i class="ti ti-shield-lock"></i></div>
+      <h3>Cybersecurity Awareness</h3>
+      <p>Training and content to help individuals and businesses stay safe from online threats and scams.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem">
+        <div class="svc-price">From KSh 1,000</div>
+        <span id="cyber-arrow" style="color:var(--accent);font-size:18px;transition:transform 0.3s">&#43;</span>
+      </div>
+    </div>
+    <div id="cyber-panel" class="svc-panel">
+      <div class="panel-inner">
+        <h4>What you get:</h4>
+        <ul>
+          <li>Cybersecurity awareness content for your social media</li>
+          <li>Staff training sessions on online safety</li>
+          <li>WhatsApp, M-Pesa & social media scam prevention guides</li>
+          <li>Business cybersecurity assessment and recommendations</li>
+          <li>Custom awareness posters and flyers for your workplace</li>
+        </ul>
+        <h4>Topics I cover:</h4>
+        <div class="example-tags">
+          <span class="ex-tag">🔐 WhatsApp Account Takeovers</span>
+          <span class="ex-tag">📶 Fake Wi-Fi Attacks</span>
+          <span class="ex-tag">💳 M-Pesa Scams</span>
+          <span class="ex-tag">🎣 Phishing & Fake Job Scams</span>
+          <span class="ex-tag">🔑 Password Security</span>
+          <span class="ex-tag">📱 Phone Safety</span>
+        </div>
+        <a href="https://wa.me/254790965427?text=Hi%20Larry!%20I%20need%20cybersecurity%20awareness%20training" target="_blank" class="panel-btn">Book a Session on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="svc-card" onclick="toggleService('social')" style="cursor:pointer">
+      <div class="svc-icon"><i class="ti ti-device-mobile"></i></div>
+      <h3>Social Media Content</h3>
+      <p>TikTok, Instagram, and Facebook scripts, captions, and video strategies for personal brands.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem">
+        <div class="svc-price">From KSh 800</div>
+        <span id="social-arrow" style="color:var(--accent);font-size:18px;transition:transform 0.3s">&#43;</span>
+      </div>
+    </div>
+    <div id="social-panel" class="svc-panel">
+      <div class="panel-inner">
+        <h4>What you get:</h4>
+        <ul>
+          <li>TikTok, Instagram Reels & Facebook video scripts</li>
+          <li>Scroll-stopping captions with hashtags</li>
+          <li>Content calendar and posting strategy</li>
+          <li>Story-led content that builds followers and trust</li>
+          <li>Personal brand positioning advice</li>
+        </ul>
+        <h4>Content types I create:</h4>
+        <div class="example-tags">
+          <span class="ex-tag">🎥 TikTok Scripts</span>
+          <span class="ex-tag">📸 Instagram Captions</span>
+          <span class="ex-tag">👤 Facebook Posts</span>
+          <span class="ex-tag">🔐 Cybersecurity Content</span>
+          <span class="ex-tag">💼 Business Promotion</span>
+          <span class="ex-tag">📣 Brand Awareness</span>
+        </div>
+        <a href="https://wa.me/254790965427?text=Hi%20Larry!%20I%20need%20social%20media%20content" target="_blank" class="panel-btn">Order Content on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="svc-card" onclick="toggleService('web')" style="cursor:pointer">
+      <div class="svc-icon"><i class="ti ti-world"></i></div>
+      <h3>Website Design</h3>
+      <p>Clean, modern, mobile-friendly websites for businesses, portfolios, and personal brands.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem">
+        <div class="svc-price">From KSh 5,000</div>
+        <span id="web-arrow" style="color:var(--accent);font-size:18px;transition:transform 0.3s">&#43;</span>
+      </div>
+    </div>
+    <div id="web-panel" class="svc-panel">
+      <div class="panel-inner">
+        <h4>What you get:</h4>
+        <ul>
+          <li>Fully designed, mobile-friendly professional website</li>
+          <li>Services section, about page, and contact form</li>
+          <li>WhatsApp button so clients can reach you instantly</li>
+          <li>Published live on the internet — free hosting setup</li>
+          <li>Delivered and ready to share within 72 hours</li>
+        </ul>
+        <h4>Website examples I have built:</h4>
+        <div class="example-tags">
+          <span class="ex-tag">🌐 Larry Designs — This Website</span>
+          <span class="ex-tag">💼 Business Portfolio Sites</span>
+          <span class="ex-tag">🛍️ Small Business Websites</span>
+          <span class="ex-tag">👤 Personal Brand Pages</span>
+        </div>
+        <a href="https://wa.me/254790965427?text=Hi%20Larry!%20I%20want%20a%20website%20built" target="_blank" class="panel-btn">Get Your Website on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="svc-card" onclick="toggleService('graphic')" style="cursor:pointer">
+      <div class="svc-icon"><i class="ti ti-brush"></i></div>
+      <h3>Graphic Design</h3>
+      <p>Flyers, posters, banners, and digital marketing materials designed for your brand or event.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem">
+        <div class="svc-price">From KSh 400</div>
+        <span id="graphic-arrow" style="color:var(--accent);font-size:18px;transition:transform 0.3s">&#43;</span>
+      </div>
+    </div>
+    <div id="graphic-panel" class="svc-panel">
+      <div class="panel-inner">
+        <h4>What you get:</h4>
+        <ul>
+          <li>High quality digital designs delivered within 24 hours</li>
+          <li>Print-ready and social media ready formats</li>
+          <li>Unlimited revisions until you are satisfied</li>
+          <li>Designs sent as JPG, PNG, or PDF</li>
+        </ul>
+        <h4>Design types I create:</h4>
+        <div class="example-tags">
+          <span class="ex-tag">📄 Business Flyers</span>
+          <span class="ex-tag">🎉 Event Posters</span>
+          <span class="ex-tag">🏷️ Business Cards</span>
+          <span class="ex-tag">📢 Social Media Banners</span>
+          <span class="ex-tag">🏪 Shop Signage</span>
+          <span class="ex-tag">📋 Awareness Posters</span>
+        </div>
+        <a href="https://wa.me/254790965427?text=Hi%20Larry!%20I%20need%20a%20graphic%20design" target="_blank" class="panel-btn">Order a Design on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="svc-card" onclick="toggleService('training')" style="cursor:pointer">
+      <div class="svc-icon"><i class="ti ti-school"></i></div>
+      <h3>Digital Skills Training</h3>
+      <p>Sessions covering online safety, social media, basic computer skills, and digital literacy.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem">
+        <div class="svc-price">From KSh 1,500</div>
+        <span id="training-arrow" style="color:var(--accent);font-size:18px;transition:transform 0.3s">&#43;</span>
+      </div>
+    </div>
+    <div id="training-panel" class="svc-panel">
+      <div class="panel-inner">
+        <h4>What you get:</h4>
+        <ul>
+          <li>One-on-one or group training sessions in Mombasa</li>
+          <li>Practical, hands-on learning — no jargon</li>
+          <li>Training notes and reference materials provided</li>
+          <li>Follow-up support after the session</li>
+        </ul>
+        <h4>Training topics available:</h4>
+        <div class="example-tags">
+          <span class="ex-tag">💻 Basic Computer Skills</span>
+          <span class="ex-tag">📱 Smartphone Safety</span>
+          <span class="ex-tag">🌐 Internet & Email Basics</span>
+          <span class="ex-tag">📲 Social Media for Business</span>
+          <span class="ex-tag">🔐 Online Safety & Scam Prevention</span>
+          <span class="ex-tag">📊 Microsoft Office Basics</span>
+        </div>
+        <a href="https://wa.me/254790965427?text=Hi%20Larry!%20I%20am%20interested%20in%20digital%20skills%20training" target="_blank" class="panel-btn">Book a Training Session</a>
+      </div>
+    </div>
   </div>
 </section>
 
